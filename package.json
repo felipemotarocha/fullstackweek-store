@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.4.2",
     "next": "13.5.5",
     "react": "^18",
     "react-dom": "^18"
@@ -21,6 +22,8 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.5",
     "postcss": "^8",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.6",
     "prisma": "^5.4.2",
     "tailwindcss": "^3",
     "typescript": "^5"
