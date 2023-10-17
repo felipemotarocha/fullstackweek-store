@@ -5,13 +5,19 @@ Este é o repositório oficial do e-commerce desenvolvido durante a Full Stack W
 ## Tecnologias Utilizadas 🚀
 
 - **React**: Uma biblioteca JavaScript popular para construir interfaces de usuário interativas.
-- **Next.js 13**: Um framework React que oferece renderização do lado do servidor (SSR) e geração estática (SSG).
+
+- **Next.js 13**: Um framework React que oferece renderização do lado do servidor (SSR), geração estática (SSG), entre muitos outros recursos.
+
 - **Next Auth**: Biblioteca para autenticação de usuários com OAuth.
-- **TypeScript**: Linguagem de programação que adiciona tipos estáticos ao JavaScript.
+
 - **Postgres**: Um sistema de gerenciamento de banco de dados relacional.
+
 - **Prisma**: Um ORM (Object-Relational Mapping) para Node.js e TypeScript.
+
 - **shadcn/ui**: Uma biblioteca de componentes de IU reutilizáveis e estilizáveis.
-- **Tailwind CSS**: Uma estrutura de design CSS altamente configurável e utilitária.
+
+- **Tailwind CSS**: Um framework CSS que oferece várias classes para utilização já pré-estilizadas.
+
 - **API do Stripe**: Uma API de pagamento popular para processar pagamentos online de forma segura.
 
 ## Funcionalidades 📦
