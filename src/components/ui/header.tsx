@@ -11,11 +11,12 @@ import {
 } from "lucide-react";
 import { Button } from "./button";
 import { Card } from "./card";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage } from "./avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import { Separator } from "./separator";
+import Link from "next/link";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -85,27 +86,33 @@ const Header = () => {
                 Fazer Logout
               </Button>
             )}
-
-            <Button variant="outline" className="w-full justify-start gap-2">
-              <HomeIcon size={16} />
-              Início
-            </Button>
+            <Link href="/">
+              <SheetClose asChild>
+                <Button variant="outline" className="w-full justify-start gap-2">
+                  <HomeIcon size={16} />
+                  Início
+                </Button>
+              </SheetClose>
+            </Link>
 
             <Button variant="outline" className="w-full justify-start gap-2">
               <PercentIcon size={16} />
               Ofertas
             </Button>
-
-            <Button variant="outline" className="w-full justify-start gap-2">
-              <ListOrderedIcon size={16} />
-              Catálogo
-            </Button>
+            <Link href="/catalog">
+              <SheetClose asChild>
+                <Button variant="outline" className="w-full justify-start gap-2">
+                  <ListOrderedIcon size={16} />
+                  Catálogo
+                </Button>
+              </SheetClose>
+            </Link>
           </div>
         </SheetContent>
       </Sheet>
 
       <h1 className="text-lg font-semibold">
-        <span className="text-primary">FSW</span> Store
+        <span className="text-transparent bg-clip-text bg-text-gradient">FSW</span> Store
       </h1>
 
       <Button size="icon" variant="outline">
