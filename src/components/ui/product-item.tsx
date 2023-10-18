@@ -31,23 +31,23 @@ const ProductItem = ({ product }: ProductItemProps) => {
       </div>
 
       <div className="flex flex-col gap-1">
-        <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm">
+        <p className="truncate text-sm">
           {product.name}
         </p>
 
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-2">
           {product.discountPercentage > 0 ? (
             <>
-              <p className="overflow-hidden text-ellipsis whitespace-nowrap font-semibold">
+              <p className="truncate font-semibold">
                 R$ {product.totalPrice.toFixed(2)}
               </p>
 
-              <p className="overflow-hidden text-ellipsis whitespace-nowrap text-xs line-through opacity-75">
+              <p className="truncate text-xs line-through opacity-75">
                 R$ {Number(product.basePrice).toFixed(2)}
               </p>
             </>
           ) : (
-            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold">
+            <p className="truncate text-sm font-semibold">
               R$ {product.basePrice.toFixed(2)}
             </p>
           )}
