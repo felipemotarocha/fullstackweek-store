@@ -1,1 +1,1 @@
-export { CATEGORY_ICONS } from "./category-icons";
+export { ICONS } from "./icons";
