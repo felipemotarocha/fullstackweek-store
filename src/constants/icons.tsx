@@ -1,4 +1,4 @@
-import { HeadphonesIcon, KeyboardIcon, MonitorIcon, MouseIcon, ShapesIcon, SpeakerIcon, SquareIcon } from "lucide-react";
+import { HeadphonesIcon, KeyboardIcon, MonitorIcon, MouseIcon, ShapesIcon, ShoppingCartIcon, SpeakerIcon, SquareIcon } from "lucide-react";
 
 export const ICONS = {
   mouses: <MouseIcon size={16} />,
@@ -8,4 +8,5 @@ export const ICONS = {
   monitors: <MonitorIcon size={16} />,
   speakers: <SpeakerIcon size={16} />,
   catalog: <ShapesIcon size={16} />,
+  cart: <ShoppingCartIcon size={16} />,
 }

@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import DiscountBadge from "@/components/ui/discount-badge";
 import { currency } from "@/helpers";
 import { ProductWithTotalPrice } from "@/helpers/product-discount";
+import { CartContext } from "@/providers/cart";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
 
 interface ProductInfoProps {
   product: ProductWithTotalPrice;
@@ -14,12 +17,26 @@ interface ProductInfoProps {
 const ProductDetail = ({ product }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
 
+  const { addProductToCart, removeProductFromCart } = useContext(CartContext);
+
   const handleDecreaseQuantityClick = () => {
     setQuantity((prev) => (prev === 1 ? prev : prev - 1));
   };
 
   const handleIncreaseQuantityClick = () => {
     setQuantity((prev) => prev + 1);
+  };
+
+  const { toast } = useToast()
+  const handleAddToCartClick = () => {
+    toast({
+      title: "Produto adicionado!",
+      description: "Produto adicionado no carrinho",
+      action: (
+        <ToastAction altText="Fechar">Fechar</ToastAction>
+      ),
+    })
+    addProductToCart({ ...product, quantity });
   };
 
   return (
@@ -65,7 +82,7 @@ const ProductDetail = ({ product }: ProductInfoProps) => {
         <p className="text-justify text-sm opacity-60">{product.description}</p>
       </div>
 
-      <Button className="mt-8 font-bold uppercase">
+      <Button className="mt-8 font-bold uppercase" onClick={handleAddToCartClick}>
         Adicionar ao carrinho
       </Button>
 

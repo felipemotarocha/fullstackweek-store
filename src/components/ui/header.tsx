@@ -17,6 +17,7 @@ import { Avatar, AvatarImage } from "./avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import { Separator } from "./separator";
 import Link from "next/link";
+import Cart from "./cart";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -115,9 +116,16 @@ const Header = () => {
         <span className="text-transparent bg-clip-text bg-text-gradient">FSW</span> Store
       </h1>
 
-      <Button size="icon" variant="outline">
-        <ShoppingCartIcon />
-      </Button>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button size="icon" variant="outline">
+            <ShoppingCartIcon />
+          </Button>
+        </SheetTrigger>
+        <SheetContent className="w-[85%]">
+          <Cart />
+        </SheetContent>
+      </Sheet>
     </Card>
   );
 };

@@ -19,7 +19,7 @@ const CategoryPage = async ({ params }: any) => {
 
   return (
     <div className="flex flex-col gap-8 p-5">
-      <TextBadge slug={category.slug}>{category.name}</TextBadge>
+      <TextBadge icon={category.slug}>{category.name}</TextBadge>
       <div className="grid grid-cols-2 gap-8">
         {category.products.map((product) => (
           <ProductItem

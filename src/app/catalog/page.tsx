@@ -7,7 +7,7 @@ const CatalogPage = async () => {
 
   return (
     <div className="flex flex-col gap-8 p-5">
-      <TextBadge slug="catalog">Catálogo</TextBadge>
+      <TextBadge icon="catalog">Catálogo</TextBadge>
       <div className="grid grid-cols-2 gap-8">
         {categories.map((category) => (
           <CategoryItem key={category.id} category={category} />
