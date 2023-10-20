@@ -7,9 +7,20 @@ import { Separator } from "@radix-ui/react-separator";
 import { currency } from "@/helpers";
 import { Button } from "./button";
 import { ScrollArea } from "./scroll-area";
+import { createCheckout } from "@/actions/checkout";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
   const { products, cartBasePrice, cartTotalDiscount, cartTotalPrice } = useContext(CartContext);
+
+  const handlePurchase = async () => {
+    const checkout = await createCheckout(products);
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
+    stripe?.redirectToCheckout({
+      sessionId: checkout.id,
+    })
+  }
+
   return (
     <div className="flex flex-col gap-8 h-full">
       <TextBadge icon={"cart"}>CARRINHO</TextBadge>
@@ -51,7 +62,7 @@ const Cart = () => {
               <p>{currency(cartTotalPrice)}</p>
             </div>
           </div>
-          <Button>Finalizar Compra</Button>
+          <Button onClick={handlePurchase}>Finalizar Compra</Button>
         </>
       ) : (
         <div className="flex flex-col items-center text-sm">
