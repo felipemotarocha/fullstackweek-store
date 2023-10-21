@@ -32,6 +32,7 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         "dark-gray": "hsl(var(--dark-gray))",
+        purpleBadge: "hsl(var(--purpleBadge))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
