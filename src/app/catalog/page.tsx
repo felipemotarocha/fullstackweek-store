@@ -1,6 +1,11 @@
 import { prismaClient } from "@/lib/prisma";
 import CategoryItem from "./components/category-item";
 import TextBadge from "@/components/ui/text-badge";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "FSW Store | Catálogo",
+};
 
 const CatalogPage = async () => {
   const categories = await prismaClient.category.findMany({});

@@ -2,6 +2,11 @@ import ProductItem from "@/components/ui/product-item";
 import TextBadge from "@/components/ui/text-badge";
 import { computeProductTotalPrice } from "@/helpers/product-discount";
 import { prismaClient } from "@/lib/prisma";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "FSW Store | Produtos",
+};
 
 const CategoryPage = async ({ params }: any) => {
   const category = await prismaClient.category.findFirst({
