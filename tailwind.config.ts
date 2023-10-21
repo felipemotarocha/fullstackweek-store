@@ -16,9 +16,14 @@ module.exports = {
       },
     },
     extend: {
+      maxWidth: {
+        "screen-size": "984px",
+      },
       backgroundImage: {
-        'primary-gradient': 'linear-gradient(45deg, hsl(var(--primary)) 0%, rgba(80, 51, 195, 0.20) 100%)',
-        'text-gradient': "    linear-gradient(90deg, hsl(var(--primary)) 0%,#8162FF 39.11%)"
+        "primary-gradient":
+          "linear-gradient(45deg, hsl(var(--primary)) 0%, rgba(80, 51, 195, 0.20) 100%)",
+        "text-gradient":
+          "    linear-gradient(90deg, hsl(var(--primary)) 0%,#8162FF 39.11%)",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -26,6 +31,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        "dark-gray": "hsl(var(--dark-gray))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

@@ -40,8 +40,8 @@ const ProductDetail = ({ product }: ProductInfoProps) => {
   };
 
   return (
-    <div className="flex flex-col px-5">
-      <h2 className="text-lg">{product.name}</h2>
+    <div className="flex flex-col px-5 lg:max-w-[392px] lg:bg-accent lg:rounded-xl lg:p-10 mt-7 lg:mt-0">
+      <h2 className="text-lg font-light">{product.name}</h2>
       <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold">
           {currency(product.totalPrice)}
@@ -61,6 +61,7 @@ const ProductDetail = ({ product }: ProductInfoProps) => {
         <Button
           size="icon"
           variant="outline"
+          className="border-2 border-solid border-white/5 lg:bg-accent"
           onClick={handleDecreaseQuantityClick}
         >
           <ArrowLeftIcon size={16} />
@@ -71,6 +72,7 @@ const ProductDetail = ({ product }: ProductInfoProps) => {
         <Button
           size="icon"
           variant="outline"
+          className="border-2 border-solid border-white/5 lg:bg-accent"
           onClick={handleIncreaseQuantityClick}
         >
           <ArrowRightIcon size={16} />
@@ -86,7 +88,7 @@ const ProductDetail = ({ product }: ProductInfoProps) => {
         Adicionar ao carrinho
       </Button>
 
-      <div className="mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2">
+      <div className=" lg:bg-dark-gray mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2">
         <div className="flex items-center gap-2">
           <TruckIcon />
 

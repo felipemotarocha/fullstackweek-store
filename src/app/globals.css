@@ -6,6 +6,7 @@
   :root {
     --background: 0 0% 4%;
     --foreground: 0 0% 100%;
+    --dark-gray: 0 0% 16%;
 
     --card: 0 0% 4%;
     --card-foreground: 0 0% 100%;
@@ -41,7 +42,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground h-full;
+    @apply h-full bg-background text-foreground;
   }
   html {
     @apply h-full;
