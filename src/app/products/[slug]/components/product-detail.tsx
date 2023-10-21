@@ -7,8 +7,8 @@ import { ProductWithTotalPrice } from "@/helpers/product-discount";
 import { CartContext } from "@/providers/cart";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
-import { ToastAction } from "@/components/ui/toast"
-import { useToast } from "@/components/ui/use-toast"
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/use-toast";
 
 interface ProductInfoProps {
   product: ProductWithTotalPrice;
@@ -27,25 +27,21 @@ const ProductDetail = ({ product }: ProductInfoProps) => {
     setQuantity((prev) => prev + 1);
   };
 
-  const { toast } = useToast()
+  const { toast } = useToast();
   const handleAddToCartClick = () => {
     toast({
       title: "Produto adicionado!",
       description: "Produto adicionado no carrinho",
-      action: (
-        <ToastAction altText="Fechar">Fechar</ToastAction>
-      ),
-    })
+      action: <ToastAction altText="Fechar">Fechar</ToastAction>,
+    });
     addProductToCart({ ...product, quantity });
   };
 
   return (
-    <div className="flex flex-col px-5 lg:max-w-[392px] lg:bg-accent lg:rounded-xl lg:p-10 mt-7 lg:mt-0">
+    <div className="mt-7 flex flex-col px-5 lg:mt-0 lg:max-w-[392px] lg:rounded-xl lg:bg-accent lg:p-10">
       <h2 className="text-lg font-light">{product.name}</h2>
       <div className="flex items-center gap-2">
-        <h1 className="text-xl font-bold">
-          {currency(product.totalPrice)}
-        </h1>
+        <h1 className="text-xl font-bold">{currency(product.totalPrice)}</h1>
         {product.discountPercentage > 0 && (
           <DiscountBadge>{product.discountPercentage}</DiscountBadge>
         )}
@@ -77,18 +73,20 @@ const ProductDetail = ({ product }: ProductInfoProps) => {
         >
           <ArrowRightIcon size={16} />
         </Button>
-
       </div>
       <div className="mt-8 flex flex-col gap-3">
         <h3 className="font-bold">Descrição</h3>
         <p className="text-justify text-sm opacity-60">{product.description}</p>
       </div>
 
-      <Button className="mt-8 font-bold uppercase" onClick={handleAddToCartClick}>
+      <Button
+        className="mt-8 font-bold uppercase"
+        onClick={handleAddToCartClick}
+      >
         Adicionar ao carrinho
       </Button>
 
-      <div className=" lg:bg-dark-gray mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2">
+      <div className=" mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2 lg:bg-dark-gray">
         <div className="flex items-center gap-2">
           <TruckIcon />
 
@@ -104,8 +102,8 @@ const ProductDetail = ({ product }: ProductInfoProps) => {
 
         <p className="text-xs font-bold">Frete grátis</p>
       </div>
-    </div >
+    </div>
   );
-}
+};
 
 export default ProductDetail;

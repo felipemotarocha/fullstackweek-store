@@ -14,8 +14,8 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
     setCurrentImage(imageUrl);
   };
   return (
-    <div className="flex flex-col lg:bg-accent lg:rounded-xl lg:flex-row-reverse lg:flex-1 max-w-[736px]">
-      <div className="flex h-[380px] w-full items-center lg:rounded-xl justify-center bg-accent">
+    <div className="flex max-w-[736px] flex-col lg:flex-1 lg:flex-row-reverse lg:rounded-xl lg:bg-accent">
+      <div className="flex h-[380px] w-full items-center justify-center bg-accent lg:rounded-xl">
         <Image
           src={currentImage}
           alt={name}
@@ -25,14 +25,15 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
           className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
         />
       </div>
-      <div className="mt-8 grid grid-cols-4 gap-4 px-5 lg:flex lg:flex-col lg:mt-0 lg:py-5">
+      <div className="mt-8 grid grid-cols-4 gap-4 px-5 lg:mt-0 lg:flex lg:flex-col lg:py-5">
         {imageUrls.map((imageUrl) => (
           <button
             key={imageUrl}
             className={`flex h-[80px] w-[77px] items-center justify-center rounded-lg lg:bg-background
-                ${imageUrl === currentImage &&
-              "border-2 border-solid border-primary"
-              }
+                ${
+                  imageUrl === currentImage &&
+                  "border-2 border-solid border-primary"
+                }
             `}
             onClick={() => handleImageClick(imageUrl)}
           >
@@ -48,6 +49,6 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 export default ProductImages;

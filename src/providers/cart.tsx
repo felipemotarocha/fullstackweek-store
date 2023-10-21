@@ -23,17 +23,16 @@ export const CartContext = createContext<ICartContext>({
   cartTotalPrice: 0,
   cartBasePrice: 0,
   cartTotalDiscount: 0,
-  addProductToCart: () => { },
-  decreaseProductQuantity: () => { },
-  increaseProductQuantity: () => { },
-  removeProductFromCart: () => { },
+  addProductToCart: () => {},
+  decreaseProductQuantity: () => {},
+  increaseProductQuantity: () => {},
+  removeProductFromCart: () => {},
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([]);
 
   const addProductToCart = (product: CartProduct) => {
-
     const productIsAlreadyOnCart = products.some(
       (cartProduct) => cartProduct.id === product.id,
     );

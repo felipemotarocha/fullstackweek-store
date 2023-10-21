@@ -9,15 +9,16 @@ import { Metadata } from "next";
 interface ProductDetailPageProps {
   params: {
     slug: string;
-  }
+  };
 }
 
 export const metadata: Metadata = {
   title: "FSW Store | Produto",
 };
 
-const ProductDetailPage = async ({ params: { slug } }: ProductDetailPageProps) => {
-
+const ProductDetailPage = async ({
+  params: { slug },
+}: ProductDetailPageProps) => {
   const product = await prismaClient.product.findFirst({
     where: {
       slug: slug,
@@ -40,8 +41,8 @@ const ProductDetailPage = async ({ params: { slug } }: ProductDetailPageProps) =
   if (!product) return null;
 
   return (
-    <div className="flex flex-col gap-8 pb-8 lg:px-24 lg:py-10 mx-auto lg:max-w-[1040px]">
-      <div className="lg:flex w-full lg:justify-between gap-8">
+    <div className="mx-auto flex flex-col gap-8 pb-8 lg:max-w-[1040px] lg:px-24 lg:py-10">
+      <div className="w-full gap-8 lg:flex lg:justify-between">
         <ProductImages imageUrls={product.imageUrls} name={product.name} />
         <ProductDetail product={computeProductTotalPrice(product)} />
       </div>
@@ -50,6 +51,6 @@ const ProductDetailPage = async ({ params: { slug } }: ProductDetailPageProps) =
         <ProductList products={product.category.products} />
       </div>
     </div>
-  )
-}
+  );
+};
 export default ProductDetailPage;

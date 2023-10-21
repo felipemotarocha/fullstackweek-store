@@ -3,14 +3,14 @@ import { Category } from "@prisma/client";
 import Link from "next/link";
 
 interface CategoryItemProps {
-  category: Category
+  category: Category;
 }
 
 const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
     <Link href={`/category/${category.slug}`}>
       <div className="flex flex-col">
-        <div className="bg-primary-gradient aspect-square flex h-[150px] w-full items-center justify-center rounded-tl-lg rounded-tr-lg">
+        <div className="flex aspect-square h-[150px] w-full items-center justify-center rounded-tl-lg rounded-tr-lg bg-primary-gradient">
           {/* IMAGEM */}
           <Image
             src={category.imageUrl}
@@ -28,6 +28,6 @@ const CategoryItem = ({ category }: CategoryItemProps) => {
       </div>
     </Link>
   );
-}
+};
 
 export default CategoryItem;

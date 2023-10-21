@@ -10,12 +10,16 @@ interface CategoryItemProps {
 const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
     <Link href={`/category/${category.slug}`}>
-      <Button key={category.id} variant="outline" className="hover:bg-transparent flex items-center gap-2 w-full">
+      <Button
+        key={category.id}
+        variant="outline"
+        className="flex w-full items-center gap-2 hover:bg-transparent"
+      >
         {ICONS[category.slug as keyof typeof ICONS]}
         <span>{category.name}</span>
       </Button>
     </Link>
   );
-}
+};
 
 export default CategoryItem;

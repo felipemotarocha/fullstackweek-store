@@ -1,5 +1,5 @@
 import { ImageProps } from "next/image";
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 
 const PromotionBanner = ({ ...props }: ImageProps) => {
@@ -14,6 +14,6 @@ const PromotionBanner = ({ ...props }: ImageProps) => {
       className={_class}
     />
   );
-}
+};
 
 export default PromotionBanner;

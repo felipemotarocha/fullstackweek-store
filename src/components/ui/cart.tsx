@@ -11,18 +11,19 @@ import { createCheckout } from "@/actions/checkout";
 import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
-  const { products, cartBasePrice, cartTotalDiscount, cartTotalPrice } = useContext(CartContext);
+  const { products, cartBasePrice, cartTotalDiscount, cartTotalPrice } =
+    useContext(CartContext);
 
   const handlePurchase = async () => {
     const checkout = await createCheckout(products);
-    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
     stripe?.redirectToCheckout({
       sessionId: checkout.id,
-    })
-  }
+    });
+  };
 
   return (
-    <div className="flex flex-col gap-8 h-full">
+    <div className="flex h-full flex-col gap-8">
       <TextBadge icon={"cart"}>CARRINHO</TextBadge>
       {products.length > 0 ? (
         <>
@@ -72,6 +73,6 @@ const Cart = () => {
       )}
     </div>
   );
-}
+};
 
 export default Cart;

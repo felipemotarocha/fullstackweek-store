@@ -23,7 +23,7 @@ const CategoryPage = async ({ params }: any) => {
   }
 
   return (
-    <div className="flex flex-col gap-8 p-5 mx-auto max-w-[1024px]">
+    <div className="mx-auto flex max-w-[1024px] flex-col gap-8 p-5">
       <TextBadge icon={category.slug}>{category.name}</TextBadge>
       <div className="grid grid-cols-2 gap-8 lg:grid-cols-5">
         {category.products.map((product) => (
@@ -35,6 +35,6 @@ const CategoryPage = async ({ params }: any) => {
       </div>
     </div>
   );
-}
+};
 
 export default CategoryPage;

@@ -6,6 +6,6 @@ const SectionTitle = ({ children, ...props }: ComponentProps<"p">) => {
       {children}
     </p>
   );
-}
+};
 
 export default SectionTitle;

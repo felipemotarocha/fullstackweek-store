@@ -9,7 +9,6 @@ interface CartItemProps {
 }
 
 const CartItem = ({ product }: CartItemProps) => {
-
   const {
     decreaseProductQuantity,
     increaseProductQuantity,
@@ -85,6 +84,6 @@ const CartItem = ({ product }: CartItemProps) => {
       </Button>
     </div>
   );
-}
+};
 
 export default CartItem;

@@ -5,13 +5,14 @@ import Header from "@/components/ui/header";
 import { AuthProvider } from "@/providers/auth";
 import Footer from "@/components/ui/footer";
 import CartProvider, { CartContext } from "@/providers/cart";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "FSW Store | Home",
-  description: "Bem-vindo à FSW Store, sua loja online de eletrônicos. Descubra uma ampla gama de produtos de alta qualidade. Oferecemos conveniência, qualidade e segurança para suas compras online. Explore agora!"
+  description:
+    "Bem-vindo à FSW Store, sua loja online de eletrônicos. Descubra uma ampla gama de produtos de alta qualidade. Oferecemos conveniência, qualidade e segurança para suas compras online. Explore agora!",
 };
 
 export default function RootLayout({
@@ -26,9 +27,7 @@ export default function RootLayout({
           <CartProvider>
             <div className="flex h-full flex-col">
               <Header />
-              <div className="flex-1">
-                {children}
-              </div>
+              <div className="flex-1">{children}</div>
               <Footer />
             </div>
             <Toaster />

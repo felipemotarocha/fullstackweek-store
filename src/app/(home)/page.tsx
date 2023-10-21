@@ -10,31 +10,35 @@ const Home = async () => {
   const deals = await prismaClient.product.findMany({
     where: {
       discountPercentage: {
-        gt: 0
-      }
-    }
-  })
+        gt: 0,
+      },
+    },
+  });
 
   const keyboards = await prismaClient.product.findMany({
     where: {
       category: {
-        slug: 'keyboards'
-      }
-    }
-  })
+        slug: "keyboards",
+      },
+    },
+  });
 
   const mouses = await prismaClient.product.findMany({
     where: {
       category: {
-        slug: 'mouses'
-      }
-    }
-  })
+        slug: "mouses",
+      },
+    },
+  });
 
   return (
-    <div className="flex flex-col py-8 gap-8">
-      <PromotionBanner src="/main-banner-01.png" alt="Até 55% de desconto só esse mês" className="px-5" />
-      <div className="px-5 mx-auto max-w-screen-size">
+    <div className="flex flex-col gap-8 py-8">
+      <PromotionBanner
+        src="/main-banner-01.png"
+        alt="Até 55% de desconto só esse mês"
+        className="px-5"
+      />
+      <div className="mx-auto max-w-screen-size px-5">
         <Categories />
       </div>
 
@@ -43,13 +47,21 @@ const Home = async () => {
         <Products products={deals} />
       </div>
 
-      <PromotionBanner src="/main-banner-02.png" alt="Até 55% de desconto só esse mês" className="px-5" />
+      <PromotionBanner
+        src="/main-banner-02.png"
+        alt="Até 55% de desconto só esse mês"
+        className="px-5"
+      />
       <div className="mx-auto max-w-screen-size">
         <SectionTitle>Teclados</SectionTitle>
         <Products products={keyboards} />
       </div>
 
-      <PromotionBanner src="/main-banner-03.png" alt="Até 55% de desconto em fones" className="px-5" />
+      <PromotionBanner
+        src="/main-banner-03.png"
+        alt="Até 55% de desconto em fones"
+        className="px-5"
+      />
 
       <div className="mx-auto max-w-screen-size">
         <SectionTitle>Mouses</SectionTitle>
@@ -57,6 +69,6 @@ const Home = async () => {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

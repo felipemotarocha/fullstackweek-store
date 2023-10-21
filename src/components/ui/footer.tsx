@@ -4,6 +4,6 @@ const Footer = () => {
       <p className="text-xs opacity-20">© 2023 Copyright FSW Store</p>
     </div>
   );
-}
+};
 
 export default Footer;

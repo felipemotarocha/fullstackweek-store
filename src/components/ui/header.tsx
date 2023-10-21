@@ -11,7 +11,13 @@ import {
 } from "lucide-react";
 import { Button } from "./button";
 import { Card } from "./card";
-import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage } from "./avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
@@ -89,7 +95,10 @@ const Header = () => {
             )}
             <Link href="/">
               <SheetClose asChild>
-                <Button variant="outline" className="w-full justify-start gap-2">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-2"
+                >
                   <HomeIcon size={16} />
                   Início
                 </Button>
@@ -102,7 +111,10 @@ const Header = () => {
             </Button>
             <Link href="/catalog">
               <SheetClose asChild>
-                <Button variant="outline" className="w-full justify-start gap-2">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-2"
+                >
                   <ListOrderedIcon size={16} />
                   Catálogo
                 </Button>
@@ -113,7 +125,10 @@ const Header = () => {
       </Sheet>
 
       <h1 className="text-lg font-semibold">
-        <span className="text-transparent bg-clip-text bg-text-gradient">FSW</span> Store
+        <span className="bg-text-gradient bg-clip-text text-transparent">
+          FSW
+        </span>{" "}
+        Store
       </h1>
 
       <Sheet>
