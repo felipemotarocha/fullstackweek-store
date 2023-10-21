@@ -12,17 +12,14 @@ const ProductItem = ({ product }: ProductItemProps) => {
   return (
     <Link href={`/products/${product.slug}`}>
       <div className="flex flex-col max-w-[150px] gap-4">
-        <div className="relative flex h-[170px] w-[150px] items-center justify-center rounded-lg bg-accent">
+        <div className="relative aspect-square flex h-[170px] w-[150px] items-center justify-center rounded-lg bg-accent">
           <Image
             src={product.imageUrls[0]}
             alt={product.name}
             height={0}
             width={0}
             sizes="100vw"
-            className="h-auto max-h-[70%] w-auto max-w-[80%]"
-            style={{
-              objectFit: "contain",
-            }}
+            className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
           />
           {product.discountPercentage > 0 && (
             <DiscountBadge className="absolute left-3 top-3">

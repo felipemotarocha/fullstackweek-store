@@ -37,6 +37,10 @@
   }
 }
 
+.object-contain {
+  object-fit: contain;
+}
+
 @layer base {
   * {
     @apply border-border;

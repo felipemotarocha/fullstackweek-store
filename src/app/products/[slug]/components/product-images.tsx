@@ -22,10 +22,7 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
           height={0}
           width={0}
           sizes="100vw"
-          className="h-auto max-h-[70%] w-auto max-w-[80%]"
-          style={{
-            objectFit: "contain",
-          }}
+          className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
         />
       </div>
       <div className="mt-8 grid grid-cols-4 gap-4 px-5 lg:flex lg:flex-col lg:mt-0 lg:py-5">
