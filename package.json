@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "prisma generate"
+    "prepare": "prisma generate",
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/order/payment-success"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
