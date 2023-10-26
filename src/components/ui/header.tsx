@@ -27,6 +27,7 @@ import Link from "next/link";
 import Cart from "./cart";
 import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
+import { Badge } from "./badge";
 
 const Header = () => {
 
@@ -34,7 +35,9 @@ const Header = () => {
 
   const { products } = useContext(CartContext)
 
-  const cartQuantityItems = products.length
+  const cartQuantityItems = products.reduce((acc, product) => {
+    return acc + 1 * product.quantity;
+  }, 0);
 
   const handleLoginClick = async () => {
     await signIn();
@@ -163,9 +166,9 @@ const Header = () => {
         <SheetTrigger asChild>
           <Button size="icon" variant="outline" className="relative">
             {cartQuantityItems > 0 && (
-                <span className="bg-primary rounded-lg w-6 h-6 flex items-center justify-center text-sm font-bold absolute top-[calc(-1.25rem/2)] right-[calc(-1.25rem/2)]">
+                <Badge className={`${cartQuantityItems >= 100 && 'px-4' } w-6 h-6 flex items-center justify-center text-xs font-bold absolute top-[calc(-1.25rem/2)] right-[calc(-1.25rem/2)]`}>
                     {cartQuantityItems}
-                </span>
+                </Badge>
             )}
             <ShoppingCartIcon />
           </Button>
