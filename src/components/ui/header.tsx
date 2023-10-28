@@ -29,12 +29,11 @@ import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
 
 const Header = () => {
+  const { status, data } = useSession();
 
-  const {status, data} = useSession();
+  const { products } = useContext(CartContext);
 
-  const { products } = useContext(CartContext)
-
-  const cartQuantityItems = products.length
+  const cartQuantityItems = products.length;
 
   const handleLoginClick = async () => {
     await signIn();
@@ -163,15 +162,15 @@ const Header = () => {
         <SheetTrigger asChild>
           <Button size="icon" variant="outline" className="relative">
             {cartQuantityItems > 0 && (
-                <span className="bg-primary rounded-lg w-6 h-6 flex items-center justify-center text-sm font-bold absolute top-[calc(-1.25rem/2)] right-[calc(-1.25rem/2)]">
-                    {cartQuantityItems}
-                </span>
+              <span className="absolute right-[calc(-1.25rem/2)] top-[calc(-1.25rem/2)] flex h-6 w-6 items-center justify-center rounded-lg bg-primary text-sm font-bold">
+                {cartQuantityItems}
+              </span>
             )}
             <ShoppingCartIcon />
           </Button>
         </SheetTrigger>
 
-        <SheetContent className="w-[350px]">
+        <SheetContent className="w-[350px] lg:w-[600px] lg:max-w-[600px]">
           <Cart />
         </SheetContent>
       </Sheet>
