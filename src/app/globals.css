@@ -41,9 +41,22 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground h-full;
+    @apply h-full bg-background text-foreground;
   }
   html {
     @apply h-full;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0.45rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5033c3;
+  border-radius: 999px;
 }
