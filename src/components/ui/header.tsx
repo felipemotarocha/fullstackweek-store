@@ -27,6 +27,7 @@ import Link from "next/link";
 import Cart from "./cart";
 import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
+import SearchItems from "./search-item";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -157,6 +158,8 @@ const Header = () => {
           <span className="text-primary">FSW</span> Store
         </h1>
       </Link>
+
+      <SearchItems products={products} />
 
       <Sheet>
         <SheetTrigger asChild>
