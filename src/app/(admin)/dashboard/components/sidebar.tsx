@@ -3,7 +3,7 @@ import { ListOrderedIcon, PackageIcon, PackageSearchIcon } from "lucide-react";
 
 const Sidebar = () => {
   return (
-    <div className="flex h-full w-[240px] flex-col items-center gap-10 border-r border-solid border-r-accent bg-background px-8 py-10">
+    <div className="flex h-full min-w-[240px] flex-col items-center gap-10 overflow-hidden border-r border-solid border-r-accent bg-background px-8 py-10">
       <h1 className="text-lg font-semibold">
         <span className="text-primary">FSW</span> Store
       </h1>

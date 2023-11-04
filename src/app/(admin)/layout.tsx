@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex h-full">
+        <div className="flex h-full overflow-hidden">
           <Sidebar />
-          <h1>dashboard</h1>
+          {children}
         </div>
       </body>
     </html>
