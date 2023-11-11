@@ -12,7 +12,10 @@ const ProductList = ({ products }: ProductListProps) => {
       {products.map((product) => (
         <ProductItem
           key={product.id}
-          product={computeProductTotalPrice(product)}
+          product={{
+            ...product,
+            totalPrice: computeProductTotalPrice(product),
+          }}
           className="w-[156px] lg:w-[200px] lg:min-w-[200px]"
         />
       ))}

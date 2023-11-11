@@ -11,7 +11,7 @@ interface OrderProductItemProps {
 }
 
 const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
-  const productWithTotalPrice = computeProductTotalPrice(orderProduct.product);
+  const productTotalPrice = computeProductTotalPrice(orderProduct.product);
 
   return (
     <div className="relative flex w-full items-center gap-4">
@@ -38,12 +38,12 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
         <div className="flex w-full items-center justify-between gap-1 ">
           <div className="bottom-0 flex items-center justify-center gap-1 text-right lg:absolute lg:right-0 lg:top-0 lg:my-auto lg:flex-col lg:items-end">
             <p className="text-sm font-bold lg:text-xl">
-              R$ {productWithTotalPrice.totalPrice.toFixed(2)}
+              R$ {productTotalPrice.toFixed(2)}
             </p>
 
-            {productWithTotalPrice.discountPercentage > 0 && (
+            {orderProduct.discountPercentage > 0 && (
               <p className="text-xs line-through opacity-60 lg:text-sm">
-                R$ {Number(productWithTotalPrice.basePrice).toFixed(2)}
+                R$ {Number(orderProduct.basePrice).toFixed(2)}
               </p>
             )}
           </div>
