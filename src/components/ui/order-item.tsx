@@ -5,13 +5,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
-import { Order, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { format } from "date-fns";
 import OrderProductItem from "./order-product-item";
 import { Separator } from "@/components/ui/separator";
 import { useMemo } from "react";
 import { computeProductTotalPrice } from "@/helpers/product";
-import { getOrderStatus } from "../helpers/status";
+import { getOrderStatus } from "../../app/(shop)/orders/helpers/status";
 
 interface OrderItemProps {
   order: Prisma.OrderGetPayload<{
