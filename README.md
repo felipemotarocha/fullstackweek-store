@@ -55,3 +55,48 @@ Este projeto está totalmente aberto a contribuições. Se você deseja colabora
 3. Faça suas alterações e adicione commits descritivos (seguindo o Conventional Commits, preferencialmente).
 
 4. Crie um pull request para a branch `main` deste repositório.
+
+## Execução do projeto
+
+Clone o projeto e acesse a pasta do mesmo.
+
+```bash
+git clone https://github.com/felipemotarocha/fullstackweek-store.git
+cd fullstackweek-store
+```
+
+Renomeie o arquivo **.env.example** para **.env** e preencha os valores das variáveis.
+
+**DATABASE_URL:** Variavel contendo a string de conexão do seu banco de dados (No projeto foi utilizado o banco Postresql com o serviço [Supabase](https://supabase.com/)).
+
+**GOOGLE_CLIENT_ID** e **GOOGLE_CLIENT_SECRET:** Para essas variáveis é necessário a criação de um projeto no [Google Developer Console](https://console.cloud.google.com/)
+
+**STRIPE_SECRET_KEY:** Inserir o valor da secret key da conta no [Stripe](https://stripe.com/br)
+
+**STRIPE_WEBHOOK_SECRET_KEY:** Rodar o comando npm run stripe:listen e pegar a key no output (Your webhook signing secret is...). Não fechar o terminal.
+
+**HOST_URL:** Em ambiente local pode ser utilizado o valor "http://localhost:3000"
+
+Para iniciar o projeto, siga os passos abaixo:
+
+```bash
+# Instalar as dependências
+$ npm install
+
+# Iniciar o projeto
+$ npm run dev
+```
+
+O app estará disponível no seu browser pelo endereço http://localhost:3000.
+
+### Deploy na Vercel
+
+Em ambiente de produção também é necessário o preenchimento das variáveis de ambiente, porém existem algumas diferenças com relação ao ambiente de desenvolvimento.
+
+**NEXT_PUBLIC_STRIPE_PUBLIC_KEY:** Chave pública de API encontrada no dashboard da sua conta do [Stripe](https://stripe.com/br)
+
+**NEXTAUTH_SECRET:** Secret utilizado para autenticação pelo NextAuth
+
+**HOST_URL:** Alterar para a URL do seu website em produção.
+
+**STRIPE_WEBHOOK_SECRET_KEY:** Valor encontrado no Endpoint criado dentro do Stripe. ([Referência](https://github.com/felipemotarocha/fullstackweek-store/issues/9))
