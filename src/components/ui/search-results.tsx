@@ -22,7 +22,7 @@ const SearchResults = ({ products }: SearchResultsProps ) => {
   if (!deferredSearch) return null
   
   return (
-    <ul className='p-5 bg-slate-50 flex flex-col gap-5 absolute w-[calc(100%-2.5rem)] z-10 max-h-80 overflow-scroll top-16 left-5 box-border rounded-md'>
+    <ul className='p-5 bg-slate-50 flex flex-col gap-5 absolute w-[calc(100%-2.5rem)] z-10 max-h-80 overflow-scroll top-16 left-5 box-border rounded-md [&::-webkit-scrollbar]:hidden'>
       { 
         deferredSearch && filteredProducts.length !== 0 ?
         filteredProducts?.map((product) => (

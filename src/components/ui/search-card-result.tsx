@@ -32,7 +32,7 @@ const SearchCardResult = ({ product }: {product: ProductWithTotalPrice | undefin
       <div>
         <p className='text-black opacity-70'>{product.name}</p>
         <span className='text-primary font-bold text-md pr-2'>{convertCurrencyToReal(product.totalPrice)}</span>
-        <span className='line-through text-xs'>{convertCurrencyToReal(Number(product.basePrice))}</span>
+        <span className='text-black opacity-60 line-through text-xs'>{convertCurrencyToReal(Number(product.basePrice))}</span>
       </div>
     </Link>
   )
