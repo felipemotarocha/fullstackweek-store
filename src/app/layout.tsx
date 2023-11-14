@@ -5,6 +5,8 @@ import Header from "@/components/ui/header";
 import { AuthProvider } from "@/providers/auth";
 import Footer from "@/components/ui/footer";
 import CartProvider from "@/providers/cart";
+import Search from "@/components/ui/search";
+import SearchProvider from "@/providers/search";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,11 +25,14 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex h-full flex-col">
           <AuthProvider>
+            <SearchProvider>
             <CartProvider>
               <Header />
+              <Search />
               <div className="flex-1">{children}</div>
               <Footer />
             </CartProvider>
+            </SearchProvider>
           </AuthProvider>
         </div>
       </body>
