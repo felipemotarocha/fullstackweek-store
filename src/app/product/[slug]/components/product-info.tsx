@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import DiscountBadge from "@/components/ui/discount-badge";
+import { convertCurrencyToReal } from "@/helpers/convert-currency";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import { CartContext } from "@/providers/cart";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
@@ -34,7 +35,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
       <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold lg:text-3xl">
-          R$ {product.totalPrice.toFixed(2)}
+        {convertCurrencyToReal(product.totalPrice)}
         </h1>
         {product.discountPercentage > 0 && (
           <DiscountBadge className="lg:text-base">
@@ -45,7 +46,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
       {product.discountPercentage > 0 && (
         <p className="text-sm line-through opacity-75 lg:text-base">
-          R$ {Number(product.basePrice).toFixed(2)}
+          {convertCurrencyToReal(Number(product.basePrice))}
         </p>
       )}
 
