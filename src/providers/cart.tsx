@@ -1,7 +1,14 @@
 "use client";
 
 import { ProductWithTotalPrice } from "@/helpers/product";
-import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 export interface CartProduct extends ProductWithTotalPrice {
   quantity: number;
@@ -38,14 +45,24 @@ export const CartContext = createContext<ICartContext>({
 const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([]);
 
+  const initialRender = useRef(true);
+  const LOCAL_STORAGE_KEY = "@fsw-store/cart-products";
+
   useEffect(() => {
-    setProducts(
-      JSON.parse(localStorage.getItem("@fsw-store/cart-products") || "[]"),
-    );
+    if (JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) as string)) {
+      const storedCartItems = JSON.parse(
+        localStorage.getItem(LOCAL_STORAGE_KEY) as string,
+      );
+      setProducts([...products, ...storedCartItems]);
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("@fsw-store/cart-products", JSON.stringify(products));
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products));
   }, [products]);
 
   // Total sem descontos
