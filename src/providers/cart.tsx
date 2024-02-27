@@ -36,16 +36,27 @@ export const CartContext = createContext<ICartContext>({
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<CartProduct[]>([]);
+  const LOCAL_STORAGE_KEY = "@fsw-store/cart-products";
+
+  const [products, setProducts] = useState<CartProduct[]>(() => {
+    if (typeof window !== "undefined") {
+      const recoveryProducts = localStorage.getItem(
+        LOCAL_STORAGE_KEY,
+      ) as string;
+      return JSON.parse(recoveryProducts) ?? [];
+    } else {
+      return [];
+    }
+  });
 
   useEffect(() => {
-    setProducts(
-      JSON.parse(localStorage.getItem("@fsw-store/cart-products") || "[]"),
-    );
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("@fsw-store/cart-products", JSON.stringify(products));
+    if (typeof window !== "undefined") {
+      if (products.length === 0) {
+        localStorage.removeItem(LOCAL_STORAGE_KEY);
+      } else {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products));
+      }
+    }
   }, [products]);
 
   // Total sem descontos
