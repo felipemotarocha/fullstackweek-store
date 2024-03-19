@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Heart,
   HomeIcon,
   ListOrderedIcon,
   LogInIcon,
@@ -121,6 +122,18 @@ const Header = () => {
                 >
                   <PackageSearchIcon size={16} />
                   Meus Pedidos
+                </Button>
+              </Link>
+            </SheetClose>
+
+            <SheetClose asChild>
+              <Link href="/WhisList">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-2"
+                >
+                  <Heart size={16} />
+                  Favoritos
                 </Button>
               </Link>
             </SheetClose>
