@@ -17,7 +17,10 @@ async function WishList() {
   }
   return (
     <div className="p-5 lg:container lg:mx-auto lg:py-10">
-      <Badge variant="outline">
+      <Badge
+        className="w-fit gap-1 border-r-2 border-primary px-3 py-1 text-sm font-semibold uppercase"
+        variant="outline"
+      >
         <Heart size={16} />
         Meus Pedidos
       </Badge>
