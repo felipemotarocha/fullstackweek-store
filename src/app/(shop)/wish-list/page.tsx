@@ -22,7 +22,7 @@ async function WishList() {
         variant="outline"
       >
         <Heart size={16} />
-        Meus Pedidos
+        Favoritos
       </Badge>
     </div>
   );
