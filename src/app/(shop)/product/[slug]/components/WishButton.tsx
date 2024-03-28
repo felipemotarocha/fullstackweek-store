@@ -35,6 +35,8 @@ const WishButton = ({ productId }: WishButtonProps) => {
                     actionButton: "!text-red-500 !bg-white font-bold",
                 }
             });
+
+            setLoading(false);
             return;
         }
 
