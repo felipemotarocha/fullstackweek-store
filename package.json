@@ -29,8 +29,10 @@
     "lucide-react": "^0.287.0",
     "next": "13.5.5",
     "next-auth": "^4.23.2",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "sonner": "^1.4.41",
     "stripe": "^14.1.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7"
