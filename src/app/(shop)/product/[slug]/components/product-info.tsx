@@ -7,12 +7,18 @@ import { CartContext } from "@/providers/cart";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
 import WishButton from "./WishButton";
+import { WishList } from "@prisma/client";
 
-interface ProductInfoProps {
-  product: ProductWithTotalPrice;
+interface ProductWithTotalPriceAndWishLists extends ProductWithTotalPrice {
+  wishLists: WishList[];
 }
 
-const ProductInfo = ({ product }: ProductInfoProps) => {
+interface ProductInfoProps {
+  product: ProductWithTotalPriceAndWishLists;
+}
+
+const ProductInfo = ( { product } : ProductInfoProps) => {
+  console.log(product.wishLists);
   const [quantity, setQuantity] = useState(1);
 
   const { addProductToCart } = useContext(CartContext);
@@ -35,7 +41,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
       <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold lg:text-3xl">
-          R$ {product.totalPrice.toFixed(2)}
+          R$ {Number(product.totalPrice).toFixed(2)}
         </h1>
         {product.discountPercentage > 0 && (
           <DiscountBadge className="lg:text-base">
@@ -76,7 +82,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
       </div>
 
       <div className="mt-8 flex flex-col gap-5">
-        <WishButton productId={product.id} />
+        <WishButton productId={product.id} wishLists={product.wishLists}  />
 
         <Button className="font-bold uppercase" onClick={handleAddToCartClick}>
           Adicionar ao carrinho

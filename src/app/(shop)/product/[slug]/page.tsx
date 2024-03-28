@@ -30,8 +30,11 @@ const ProductDetailsPage = async ({
           },
         },
       },
+      wishLists: true,
     },
   });
+
+  console.log(product);
 
   if (!product) return null;
 
