@@ -6,12 +6,19 @@ import { ProductWithTotalPrice } from "@/helpers/product";
 import { CartContext } from "@/providers/cart";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
+import WishButton from "./WishButton";
+import { WishList } from "@prisma/client";
 
-interface ProductInfoProps {
-  product: ProductWithTotalPrice;
+interface ProductWithTotalPriceAndWishLists extends ProductWithTotalPrice {
+  wishLists: WishList[];
 }
 
-const ProductInfo = ({ product }: ProductInfoProps) => {
+interface ProductInfoProps {
+  product: ProductWithTotalPriceAndWishLists;
+}
+
+const ProductInfo = ( { product } : ProductInfoProps) => {
+  console.log(product.wishLists);
   const [quantity, setQuantity] = useState(1);
 
   const { addProductToCart } = useContext(CartContext);
@@ -34,7 +41,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
       <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold lg:text-3xl">
-          R$ {product.totalPrice.toFixed(2)}
+          R$ {Number(product.totalPrice).toFixed(2)}
         </h1>
         {product.discountPercentage > 0 && (
           <DiscountBadge className="lg:text-base">
@@ -74,28 +81,29 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         <p className="text-justify text-sm opacity-60">{product.description}</p>
       </div>
 
-      <Button
-        className="mt-8 font-bold uppercase"
-        onClick={handleAddToCartClick}
-      >
-        Adicionar ao carrinho
-      </Button>
+      <div className="mt-8 flex flex-col gap-5">
+        <WishButton productId={product.id} wishLists={product.wishLists}  />
 
-      <div className="mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2 lg:bg-[#2A2A2A]">
-        <div className="flex items-center gap-2">
-          <TruckIcon />
+        <Button className="font-bold uppercase" onClick={handleAddToCartClick}>
+          Adicionar ao carrinho
+        </Button>
 
-          <div className="flex flex-col">
-            <p className="text-xs">
-              Entrega via <span className="font-bold">FSPacket®</span>
-            </p>
-            <p className="text-xs text-[#8162FF]">
-              Envio para <span className="font-bold">todo Brasil</span>
-            </p>
+        <div className="flex items-center justify-between rounded-lg bg-accent px-5 py-2 lg:bg-[#2A2A2A]">
+          <div className="flex items-center gap-2">
+            <TruckIcon />
+
+            <div className="flex flex-col">
+              <p className="text-xs">
+                Entrega via <span className="font-bold">FSPacket®</span>
+              </p>
+              <p className="text-xs text-[#8162FF]">
+                Envio para <span className="font-bold">todo Brasil</span>
+              </p>
+            </div>
           </div>
-        </div>
 
-        <p className="text-xs font-bold">Frete grátis</p>
+          <p className="text-xs font-bold">Frete grátis</p>
+        </div>
       </div>
     </div>
   );
