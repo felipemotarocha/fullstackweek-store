@@ -1,6 +1,8 @@
 "use server";
 
+import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
+import { getServerSession } from "next-auth";
 
 export const addProductToWishlist = async (
     userId: string,
@@ -48,3 +50,16 @@ export const addProductToWishlist = async (
         },
     });
 };
+
+export const getUserWishlist = async()=>{
+    const session = await getServerSession(authOptions);
+    if (!session || !session.user) {
+        return []
+      }
+    const userWishlists = await prismaClient.wishList.findMany({
+        where:{
+            userId: session.user.id
+        }
+    })
+    return userWishlists
+}
