@@ -81,8 +81,7 @@ const WishButton = ({ productId, wishLists }: WishButtonProps) => {
         return;
       }
 
-      data.wishlists.forEach((wishlistId) => {
-        console.log("forEach:",wishlistId)
+      data.wishlists.forEach((wishlistId) => {        
         addProductToWishlist(session.user.id, productId, wishlistId);
       });
 
