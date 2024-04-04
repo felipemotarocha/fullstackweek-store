@@ -8,6 +8,7 @@ import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
 import WishButton from "./WishButton";
 import { WishList } from "@prisma/client";
+import { useSession } from "next-auth/react";
 
 interface ProductWithTotalPriceAndWishLists extends ProductWithTotalPrice {
   wishLists: WishList[];
@@ -15,13 +16,14 @@ interface ProductWithTotalPriceAndWishLists extends ProductWithTotalPrice {
 
 interface ProductInfoProps {
   product: ProductWithTotalPriceAndWishLists;
+  userWishLists : WishList[];
 }
 
-const ProductInfo = ( { product } : ProductInfoProps) => {
-  console.log(product.wishLists);
+const ProductInfo = ( { product,userWishLists } : ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
 
   const { addProductToCart } = useContext(CartContext);
+  const { data } = useSession();
 
   const handleDecreaseQuantityClick = () => {
     setQuantity((prev) => (prev === 1 ? prev : prev - 1));
@@ -82,7 +84,7 @@ const ProductInfo = ( { product } : ProductInfoProps) => {
       </div>
 
       <div className="mt-8 flex flex-col gap-5">
-        <WishButton productId={product.id} wishLists={product.wishLists}  />
+        <WishButton productId={product.id} wishLists={userWishLists}  />
 
         <Button className="font-bold uppercase" onClick={handleAddToCartClick}>
           Adicionar ao carrinho
