@@ -1,6 +1,7 @@
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
 import DiscountBadge from "./discount-badge";
+import { formatedPrice } from "@/lib/utils";
 
 interface WishlistItemProps {
   product: Prisma.ProductGetPayload<{
@@ -35,7 +36,7 @@ const WishlistItem = ({ product }: WishlistItemProps) => {
         </div>
         <div className="flex">
           <p className="truncate text-sm font-semibold">
-            R$ {product.basePrice.toFixed(2)}
+            {formatedPrice(Number(product.basePrice))}
           </p>
         </div>
 

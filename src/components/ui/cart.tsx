@@ -11,11 +11,12 @@ import { createCheckout } from "@/actions/checkout";
 import { loadStripe } from "@stripe/stripe-js";
 import { createOrder } from "@/actions/order";
 import { useSession } from "next-auth/react";
+import CartPrice from "./cart-price";
 
 const Cart = () => {
   const { data } = useSession();
 
-  const { products, subtotal, total, totalDiscount } = useContext(CartContext);
+  const { products, subTotal, total, totalDiscount } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
     if (!data?.user) {
@@ -69,32 +70,33 @@ const Cart = () => {
       {products.length > 0 && (
         <div className="flex flex-col gap-3">
           <Separator />
-
-          <div className="flex items-center justify-between text-xs lg:text-sm">
-            <p>Subtotal</p>
-            <p>R$ {subtotal.toFixed(2)}</p>
-          </div>
-
+          <CartPrice
+            className={"items-center text-xs lg:text-sm"}
+            price={subTotal}
+            title={"Subtotal"}
+            isDiscount={false}
+          />
           <Separator />
-
-          <div className="flex items-center justify-between text-xs lg:text-sm">
-            <p>Entrega</p>
-            <p>GRÁTIS</p>
-          </div>
-
+          <CartPrice
+            className={"items-center text-xs lg:text-sm"}
+            price={"Grátis"}
+            title={"Entrega"}
+            isDiscount={false}
+          />
           <Separator />
-
-          <div className="flex items-center justify-between text-xs lg:text-sm">
-            <p>Descontos</p>
-            <p>- R$ {totalDiscount.toFixed(2)}</p>
-          </div>
-
+          <CartPrice
+            className={"items-center text-xs lg:text-sm"}
+            price={totalDiscount}
+            title={"Descontos"}
+            isDiscount={true}
+          />
           <Separator />
-
-          <div className="flex items-center justify-between text-sm font-bold lg:text-base">
-            <p>Total</p>
-            <p>R$ {total.toFixed(2)}</p>
-          </div>
+          <CartPrice
+            className={"items-center text-xs lg:text-sm"}
+            price={total}
+            title={"Total"}
+            isDiscount={false}
+          />
 
           <Button
             className="mt-7 font-bold uppercase"
