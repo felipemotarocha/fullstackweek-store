@@ -2,7 +2,7 @@ import { ProductWithTotalPrice } from "@/helpers/product";
 import Image from "next/image";
 import Link from "next/link";
 import DiscountBadge from "./discount-badge";
-import { cn } from "@/lib/utils";
+import { cn, formatedPrice } from "@/lib/utils";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
@@ -39,16 +39,16 @@ const ProductItem = ({ product, className }: ProductItemProps) => {
           {product.discountPercentage > 0 ? (
             <>
               <p className="truncate font-semibold lg:text-lg">
-                R$ {product.totalPrice.toFixed(2)}
+                {formatedPrice(product.totalPrice)}
               </p>
 
               <p className="truncate text-xs line-through opacity-75 lg:text-sm">
-                R$ {Number(product.basePrice).toFixed(2)}
+                {formatedPrice(Number(product.basePrice))}
               </p>
             </>
           ) : (
             <p className="truncate text-sm font-semibold">
-              R$ {product.basePrice.toFixed(2)}
+              {formatedPrice(Number(product.basePrice))}
             </p>
           )}
         </div>

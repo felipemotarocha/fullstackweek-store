@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ProductWithTotalPrice } from "@/helpers/product";
+import { formatedPrice } from "@/lib/utils";
 
 export type ProductWithTotalPriceAndCategory = ProductWithTotalPrice & {
   category: {
@@ -38,9 +39,9 @@ const ProductsTable = ({ products }: ProductsTableProps) => {
 
             <TableCell>{(product as any).category.name}</TableCell>
 
-            <TableCell>R$ {product.totalPrice.toFixed(2)}</TableCell>
+            <TableCell>{formatedPrice(product.totalPrice)}</TableCell>
 
-            <TableCell>R$ {product.basePrice.toFixed(2)}</TableCell>
+            <TableCell>{formatedPrice(Number(product.basePrice))}</TableCell>
 
             <TableCell>0</TableCell>
           </TableRow>
