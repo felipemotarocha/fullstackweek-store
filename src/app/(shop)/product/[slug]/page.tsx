@@ -4,6 +4,7 @@ import ProductInfo from "./components/product-info";
 import { computeProductTotalPrice } from "@/helpers/product";
 import ProductList from "@/components/ui/product-list";
 import SectionTitle from "@/components/ui/section-title";
+import { getUserWishlist } from "@/actions/Wishlist";
 
 interface ProductDetailsPageProps {
   params: {
@@ -34,7 +35,7 @@ const ProductDetailsPage = async ({
     },
   });
 
-  console.log(product);
+  const userWishLists = await getUserWishlist()
 
   if (!product) return null;
 
@@ -47,6 +48,7 @@ const ProductDetailsPage = async ({
             ...product,
             totalPrice: computeProductTotalPrice(product),
           }}
+          userWishLists={userWishLists}
         />
       </div>
 
