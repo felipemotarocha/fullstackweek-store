@@ -8,6 +8,7 @@ import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
 import WishButton from "./WishButton";
 import { WishList } from "@prisma/client";
+import { formatedPrice } from "@/lib/utils";
 
 interface ProductWithTotalPriceAndWishLists extends ProductWithTotalPrice {
   wishLists: WishList[];
@@ -17,7 +18,7 @@ interface ProductInfoProps {
   product: ProductWithTotalPriceAndWishLists;
 }
 
-const ProductInfo = ( { product } : ProductInfoProps) => {
+const ProductInfo = ({ product }: ProductInfoProps) => {
   console.log(product.wishLists);
   const [quantity, setQuantity] = useState(1);
 
@@ -41,18 +42,18 @@ const ProductInfo = ( { product } : ProductInfoProps) => {
 
       <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold lg:text-3xl">
-          R$ {Number(product.totalPrice).toFixed(2)}
+          {formatedPrice(product.totalPrice)}
         </h1>
         {product.discountPercentage > 0 && (
           <DiscountBadge className="lg:text-base">
-            {product.discountPercentage}
+            {formatedPrice(product.discountPercentage)}
           </DiscountBadge>
         )}
       </div>
 
       {product.discountPercentage > 0 && (
         <p className="text-sm line-through opacity-75 lg:text-base">
-          R$ {Number(product.basePrice).toFixed(2)}
+          {formatedPrice(Number(product.basePrice))}
         </p>
       )}
 
@@ -82,7 +83,7 @@ const ProductInfo = ( { product } : ProductInfoProps) => {
       </div>
 
       <div className="mt-8 flex flex-col gap-5">
-        <WishButton productId={product.id} wishLists={product.wishLists}  />
+        <WishButton productId={product.id} wishLists={product.wishLists} />
 
         <Button className="font-bold uppercase" onClick={handleAddToCartClick}>
           Adicionar ao carrinho

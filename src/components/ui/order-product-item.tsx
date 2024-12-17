@@ -1,4 +1,5 @@
 import { computeProductTotalPrice } from "@/helpers/product";
+import { formatedPrice } from "@/lib/utils";
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
 
@@ -38,12 +39,12 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
         <div className="flex w-full items-center justify-between gap-1 ">
           <div className="bottom-0 flex items-center justify-center gap-1 text-right lg:absolute lg:right-0 lg:top-0 lg:my-auto lg:flex-col lg:items-end">
             <p className="text-sm font-bold lg:text-xl">
-              R$ {productTotalPrice.toFixed(2)}
+              {formatedPrice(productTotalPrice)}
             </p>
 
             {orderProduct.discountPercentage > 0 && (
               <p className="text-xs line-through opacity-60 lg:text-sm">
-                R$ {Number(orderProduct.basePrice).toFixed(2)}
+                {formatedPrice(Number(orderProduct.basePrice))}
               </p>
             )}
           </div>

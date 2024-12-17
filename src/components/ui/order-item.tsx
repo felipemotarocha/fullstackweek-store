@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { useMemo } from "react";
 import { computeProductTotalPrice } from "@/helpers/product";
 import { getOrderStatus } from "../../app/(shop)/orders/helpers/status";
+import CartPrice from "./cart-price";
 
 interface OrderItemProps {
   order: Prisma.OrderGetPayload<{
@@ -24,7 +25,7 @@ interface OrderItemProps {
 }
 
 const OrderItem = ({ order }: OrderItemProps) => {
-  const subtotal = useMemo(() => {
+  const subTotal = useMemo(() => {
     return order.orderProducts.reduce((acc, orderProduct) => {
       return (
         acc + Number(orderProduct.product.basePrice) * orderProduct.quantity
@@ -40,7 +41,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
     }, 0);
   }, [order.orderProducts]);
 
-  const totalDiscounts = subtotal - total;
+  const totalDiscounts = subTotal - total;
 
   return (
     <Card className="px-5">
@@ -110,32 +111,33 @@ const OrderItem = ({ order }: OrderItemProps) => {
 
               <div className="flex w-full flex-col gap-1 text-xs">
                 <Separator />
-
-                <div className="flex w-full justify-between py-3 lg:text-sm">
-                  <p>Subtotal</p>
-                  <p>R$ {subtotal.toFixed(2)}</p>
-                </div>
-
+                <CartPrice
+                  className="w-full py-3 lg:text-sm"
+                  price={subTotal}
+                  title={"Subtotal"}
+                  isDiscount={false}
+                />
                 <Separator />
-
-                <div className="flex w-full justify-between py-3 lg:text-sm">
-                  <p>Entrega</p>
-                  <p>GRÁTIS</p>
-                </div>
-
+                <CartPrice
+                  className="w-full py-3 lg:text-sm"
+                  price={"Grátis"}
+                  title={"Entrega"}
+                  isDiscount={false}
+                />
                 <Separator />
-
-                <div className="flex w-full justify-between py-3 lg:text-sm">
-                  <p>Descontos</p>
-                  <p>-R$ {totalDiscounts.toFixed(2)}</p>
-                </div>
-
+                <CartPrice
+                  className="w-full py-3 lg:text-sm"
+                  price={totalDiscounts}
+                  title={"Descontos"}
+                  isDiscount={true}
+                />
                 <Separator />
-
-                <div className="flex w-full justify-between py-3 text-sm font-bold lg:text-base">
-                  <p>Total</p>
-                  <p>R$ {total.toFixed(2)}</p>
-                </div>
+                <CartPrice
+                  className="w-full py-3 text-sm font-bold lg:text-base"
+                  price={total}
+                  title={"Total"}
+                  isDiscount={false}
+                />
               </div>
             </div>
           </AccordionContent>
